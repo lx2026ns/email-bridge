@@ -10,7 +10,7 @@ module.exports = async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  const { to, subject, content, replyTo } = req.body;
+  const { to, subject, content, html, replyTo } = req.body;
 
   if (!to || !subject || !content) {
     return res.status(400).json({ error: 'Missing to, subject, or content' });
@@ -33,6 +33,11 @@ module.exports = async function handler(req, res) {
       subject: subject,
       text: content
     };
+
+    // 支持 HTML 邮件：传了 html 就用它，纯文本兜底
+    if (html) {
+      mailOptions.html = html;
+    }
 
     if (replyTo) {
       mailOptions.inReplyTo = replyTo;
