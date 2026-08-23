@@ -1,10 +1,10 @@
 {
   "name": "email-bridge",
-  "version": "1.0.0",
-  "description": "Email bridge service for OrangeChat",
+  "version": "1.1.0",
+  "description": "Email bridge service (local edition)",
   "scripts": {
-    "dev": "node api/index.js",
-    "start": "node api/index.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "dependencies": {
     "imapflow": "1.0.162",
